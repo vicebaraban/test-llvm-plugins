@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.2)
-project(llvm-test)
+project(test-llvm-plugins)
 
 message(STATUS "Found LLVM ${LLVM_PACKAGE_VERSION}")
 message(STATUS "Using LLVMConfig.cmake in: ${LLVM_DIR}")
@@ -14,9 +14,9 @@ include_directories(${LLVM_INCLUDE_DIRS})
 link_directories(${LLVM_LIBRARY_DIRS})
 add_definitions(${LLVM_DEFINITIONS})
 
-set(SOURCES testPlugin.cpp)
+set(SOURCES src/testPlugin.cpp)
 
-add_library(test-llvm SHARED ${SOURCES})
+add_library(TestPlugin SHARED ${SOURCES})
 
 find_package(LLVM 18.1.8 CONFIG REQUIRED)
 
@@ -33,8 +33,8 @@ include_directories(${LLVM_INCLUDE_DIRS})
 link_directories(${LLVM_LIBRARY_DIRS})
 add_definitions(${LLVM_DEFINITIONS})
 
-target_link_libraries(test-llvm LLVM)
+target_link_libraries(TestPlugin LLVM)
 
-set_target_properties(test-llvm PROPERTIES
-    VERSION 1.1
+set_target_properties(TestPlugin PROPERTIES
+    VERSION 1.0
 )
