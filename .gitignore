@@ -1,5 +1,7 @@
 build/
 libs/*
+*.out
 
 ### VS Code ###
 .vscode/
+
