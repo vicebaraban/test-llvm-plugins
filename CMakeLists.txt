@@ -22,9 +22,21 @@ set(SOURCES1 src/demo.cpp src/demo.h)
 
 set(SOURCES2 src/second_plugin.cpp)
 
+set(SOURCES3 src/third_plugin.cpp)
+
+set(SOURCES4 src/bb_modification_plugin.cpp)
+
+set(SOURCES5 src/print_bb_length_plugin.cpp)
+
 add_library(TestPlugin SHARED ${SOURCES1})
 
 add_library(SecondPlugin SHARED ${SOURCES2})
+
+add_library(ThirdPlugin SHARED ${SOURCES3})
+
+add_library(BBModificationPlugin SHARED ${SOURCES4})
+
+add_library(PrintBBLengthPlugin SHARED ${SOURCES5})
 
 find_package(LLVM 18.1.8 CONFIG REQUIRED)
 
@@ -52,3 +64,22 @@ target_link_libraries(SecondPlugin LLVM)
 set_target_properties(SecondPlugin PROPERTIES
     VERSION 1.0
 )
+
+target_link_libraries(ThirdPlugin LLVM)
+
+set_target_properties(ThirdPlugin PROPERTIES
+    VERSION 1.0
+)
+
+target_link_libraries(BBModificationPlugin LLVM)
+
+set_target_properties(BBModificationPlugin PROPERTIES
+    VERSION 1.0
+)
+
+target_link_libraries(PrintBBLengthPlugin LLVM)
+
+set_target_properties(PrintBBLengthPlugin PROPERTIES
+    VERSION 1.0
+)
+
