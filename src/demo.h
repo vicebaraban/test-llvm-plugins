@@ -1,5 +1,5 @@
-#ifndef ANALYSIS_MANAGER_H
-#define ANALYSIS_MANAGER_H
+#ifndef ANALYSIS_MANAGER_H_
+#define ANALYSIS_MANAGER_H_
 
 #include "llvm/IR/LegacyPassManager.h"
 #include "llvm/Passes/PassBuilder.h"
@@ -8,13 +8,9 @@
 
 namespace {
     struct ModulePassFuncList : public llvm::PassInfoMixin<ModulePassFuncList> {
-        // Main entry point, takes IR unit to run the pass on (&F) and the
-        // corresponding pass manager (to be queried if need be)
+
         llvm::PreservedAnalyses run(llvm::Module &M, llvm::ModuleAnalysisManager &);
 
-        // Without isRequired returning true, this pass will be skipped for functions
-        // decorated with the optnone LLVM attribute. Note that clang -O0 decorates
-        // all functions with optnone.
         static bool isRequired();
     };
 
@@ -32,4 +28,4 @@ namespace {
     };
 } // namespace
 
-#endif // ANALYSIS_MANAGER_H
+#endif // ANALYSIS_MANAGER_H_
